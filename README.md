@@ -796,11 +796,27 @@ If the status of the node has changed via a certain command, the entire command 
 
 # Changelog
 
-### v4.1.0 (latest)
+### v4.2.2 (latest)
+
+* HueMagic can now be installed again on older Node-RED versions without official support
+* Fixed an issue for Hue Group nodes not getting/updating their current status ([#342](https://github.com/Foddy/node-red-contrib-huemagic/issues/342)) (thx @bmdevx)
+* Fixed an error with non-functioning node configurations
+
+### v4.2.1
+
+* Commands are now re-executed up to three times if they fail due to a bridge timeout
+* The "image" option on the "Hue Light" node will now set the corresponding gradient colors on supported resources
+* Better handling of broken connections to the bridge ([#309](https://github.com/Foddy/node-red-contrib-huemagic/pull/309)) (thx)
+* Fixed an error with the "Hue Scenes" node on newer bridge firmwares ([#335](https://github.com/Foddy/node-red-contrib-huemagic/issues/335)) ([#339](https://github.com/Foddy/node-red-contrib-huemagic/pull/339)) (thx)
+* Fixed an uncaught exception on newer bridge firmwares ([#302](https://github.com/Foddy/node-red-contrib-huemagic/issues/302)) ([#309](https://github.com/Foddy/node-red-contrib-huemagic/pull/309)) (thx)
+* Updated dependencies to the latest versions
+* Fixed some typos here and there
+
+### v4.1.0
 
 * New queue worker throttles the number of parallel requests to the bridge to avoid 503 API limit errors (can be configured in the Bridge configuration)
-* Resources are now alphabetically sorted in the node´s configuration inetrface ([#282](https://github.com/Foddy/node-red-contrib-huemagic/pull/282)) (thx)
-* "Hue Bridghtness" node was optimized to output more accurate "dark" and "dayLight" values
+* Resources are now alphabetically sorted in the node´s configuration interface ([#282](https://github.com/Foddy/node-red-contrib-huemagic/pull/282)) (thx)
+* "Hue Brightness" node was optimized to output more accurate "dark" and "dayLight" values
 * Several optimizations in the documentation of some nodes
 
 ### v4.0.5
@@ -868,17 +884,8 @@ If the status of the node has changed via a certain command, the entire command 
 * Fixed an error with future states and the HTTP request node ([#200](https://github.com/Foddy/node-red-contrib-huemagic/pull/200))
 * Other optimizations, dependency updates and clean up
 
-### v2.8.6
-* Optimized random color mode for Hue Magic, Hue Light & Hue Group nodes ([#190](https://github.com/Foddy/node-red-contrib-huemagic/pull/190))
-* New Hue Button node ([#191](https://github.com/Foddy/node-red-contrib-huemagic/pull/191))
-* Updated README and Hue Button node docs (+ localized in German)
-
-### v2.8.2
-* Fixed an issue with Hue Light & Hue Group nodes on extended mode ([#179](https://github.com/Foddy/node-red-contrib-huemagic/issues/179))
-* Dependency updates
-
 ### Previous versions
-A complete overview of the updates can be viewed in the [changelog](https://github.com/Foddy/node-red-contrib-huemagic/blob/master/CHANGELOG.md)…
+The full changelog [changelog](https://github.com/Foddy/node-red-contrib-huemagic/blob/master/CHANGELOG.md) can be viewed here…
 
 
 ***
@@ -889,7 +896,7 @@ If you like HueMagic, I appreciate a star or rating on this page! HueMagic is an
 Alternatively, you can support the project if you have an old device that is compatible with the Philips Hue bridge (or a device that is not officially supported by HueMagic) and want to get rid of it. Please contact me at huemagic@foddy.io to get an address where you can send your old device. The following devices could currently be considered: Gradient lights, Tap / Button devices or table / floor lights. These types of devices have not been extensively tested during HueMagic's development.
 
 ***
-<a href="https://www.jetbrains.com/?from=HueMagic"><img src="https://gistcdn.githack.com/Foddy/062045775c28f5993ad646aba80e678c/raw/c84ea4ad31c72dde0883638fc9eaa2b51bba9962/jb.svg" height="50"></a> <a href="https://www.browserstack.com?from=HueMagic"><img src="https://gistcdn.githack.com/Foddy/062045775c28f5993ad646aba80e678c/raw/c84ea4ad31c72dde0883638fc9eaa2b51bba9962/browserstack.svg" height="50"></a>
+<a href="https://www.jetbrains.com/?from=HueMagic"><img src="https://gistcdn.githack.com/Foddy/062045775c28f5993ad646aba80e678c/raw/c84ea4ad31c72dde0883638fc9eaa2b51bba9962/jb.svg" height="50"></a><a href="https://dgtl.one/?from=HueMagic"><img src="https://gist.githubusercontent.com/Foddy/d0964219726def838c0408153b4fbf96/raw/78379ebd1f4751a16960ac904fc5f6a6c8ecad74/dgtlone.svg" height="50"> <a href="https://www.browserstack.com?from=HueMagic"><img src="https://gistcdn.githack.com/Foddy/062045775c28f5993ad646aba80e678c/raw/c84ea4ad31c72dde0883638fc9eaa2b51bba9962/browserstack.svg" height="50"></a>
 
-HueMagic for Node-RED is sponsored by [JetBrains](https://www.jetbrains.com/?from=HueMagic) and [BrowserStack](https://www.browserstack.com?from=HueMagic).<br>
+HueMagic for Node-RED is sponsored by [DGTL.ONE](https://dgtl.one/?from=HueMagic), [JetBrains](https://www.jetbrains.com/?from=HueMagic) and [BrowserStack](https://www.browserstack.com?from=HueMagic).<br>
 *Released under the [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)).*

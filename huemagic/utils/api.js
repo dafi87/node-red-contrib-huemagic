@@ -90,14 +90,7 @@ function API()
 			{
 				if(version === 2)
 				{
-					if(response.data.errors.length > 0)
-					{
-						reject(response.data.errors);
-					}
-					else
-					{
-						resolve(response.data.data);
-					}
+					resolve(response.data.data);
 				}
 				else if(version === 1)
 				{
@@ -106,7 +99,14 @@ function API()
 			})
 			.catch(function(error)
 			{
-				reject(error);
+				if (error.response)
+				{
+					reject({ status: error.response.status, errors: error.response.data.errors ? error.response.data.errors : error.response.data});
+				}
+				else
+				{
+					reject({ status: error.code, errors: error.message});
+				}
 			});
 		});
 	}
@@ -259,15 +259,16 @@ function API()
 				}
 
 				// RESOURCE HAS GROUPED SERVICES?
-				if(fullResource["grouped_services"])
+				if (fullResource["services"])
 				{
-					for (var g = fullResource["grouped_services"].length - 1; g >= 0; g--)
+					for (serviceType in fullResource["services"])
 					{
-						const groupedService = fullResource["grouped_services"][g];
-						const groupedServiceID = groupedService["rid"];
-
-						if(!processedResources["_groupsOf"][groupedServiceID]) { processedResources["_groupsOf"][groupedServiceID] = []; }
-						processedResources["_groupsOf"][groupedServiceID].push(fullResource.id);
+						const grouped_services = fullResource['services'][serviceType];
+						for (groupedServiceID in grouped_services)
+						{
+							if (!processedResources["_groupsOf"][groupedServiceID]) { processedResources["_groupsOf"][groupedServiceID] = []; }
+							processedResources["_groupsOf"][groupedServiceID].push(fullResource.id);
+						}
 					}
 				}
 
